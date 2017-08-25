@@ -25,6 +25,8 @@ class Investment < ApplicationRecord
 
   def market_name
     market_type = market || UnknonwMarket.new.name
+
+    market_type.name
   end
 
   def current_sell_price
