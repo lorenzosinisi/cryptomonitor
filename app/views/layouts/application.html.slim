@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+
+    meta name="viewport" content="width=device-width, initial-scale=1" /
+    title Portfolio
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      .container
+        a.navbar-brand href="/" Cryptomonitor
+        button.navbar-toggler aria-controls="navbarResponsive" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarResponsive" data-toggle="collapse" type="button"
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link href="/" Home
+            - if logged_in?
+              li.nav-item
+                = link_to 'Logout', session_path('logout'), method: :delete, class: 'nav-link'
+              li.nav-item
+                a.nav-link href="/investments"  Investments
+            - else
+              li.nav-item
+                = link_to "Sign Up", new_user_path, class: 'nav-link'
+              li.nav-item
+                = link_to "Log In", new_session_path, class: 'nav-link'
+
+    .template
+      .container
+        #user_header
+        = yield

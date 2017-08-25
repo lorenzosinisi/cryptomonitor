@@ -1,0 +1,43 @@
+= form_with(model: investment, local: true) do |form|
+  - if investment.errors.any?
+    #error_explanation
+      h2
+        = pluralize(investment.errors.count, "error")
+        | prohibited this investment from being saved:
+      ul
+        - investment.errors.full_messages.each do |message|
+          li= message
+  .form-group
+    = form.label :currency
+    br/
+    = form.select(:currency_id, Currency.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Currency'})
+  .form-group
+    = form.label :cryptocurrency
+    br/
+    = form.select(:cryptocurrency_id, Cryptocurrency.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Cryptourrency'})
+  .form-group
+    = form.label :total_paid
+    br/
+    = form.text_field :price, id: :investment_price, type: :number, step: :any
+    p.form-text.text-muted
+      | How much did you pay these coins including the fees?
+  .form-group
+    = form.label :coins
+    br/
+    = form.text_field :coins, id: :investment_coins, type: :number, step: :any
+    p.form-text.text-muted
+      | How many coins have been transfered with this transaction into your cryptowallet?
+  .form-group
+    = form.label :date
+    br/
+    = form.datetime_select :date, id: :investment_date
+    p.form-text.text-muted
+      | When did you buy the coins?
+  .form-group
+    = form.label :market_id
+    br/
+    = form.select(:market_id, Market.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Market'})
+    p.form-text.text-muted
+      | Where did you buy the coins?
+  .form-group
+    = form.submit "Create", class: 'btn btn-default'

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @investment.currency_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @investment.price %>
+</p>
+
+<p>
+  <strong>Coins:</strong>
+  <%= @investment.coins %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @investment.date %>
+</p>
+
+<p>
+  <strong>Market:</strong>
+  <%= @investment.market_name %>
+</p>
+
+<%= link_to 'Edit', edit_investment_path(@investment) %> |
+<%= link_to 'Back', investments_path %>

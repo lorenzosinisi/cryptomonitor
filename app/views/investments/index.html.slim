@@ -1,0 +1,43 @@
+p#notice= notice
+/! <h1>Investments</h1
+table.table.table-responsive
+  thead
+    tr
+      th Currency
+      th Price Paid
+      th Current Sell Price
+      th Profit %
+      th Current Price
+      th Coins
+      th Date
+      th Market
+      th Profit
+
+      th
+      th colspan="3"
+  tbody
+    - @investments.each do |investment|
+      tr
+        td= investment.cryptocurrency_name
+        td= investment.price.round(2)
+        td= investment.current_sell_price.round(2)
+        td= investment.profit_percentage.round
+        td= investment.current_price.round(2)
+        td= investment.coins
+        td= investment.date
+        td= investment.market_name
+        td= investment.actual_value.round(5)
+        td= link_to 'Show', investment
+        td= link_to 'Edit', edit_investment_path(investment)
+        td= link_to 'Destroy', investment, method: :delete, data: { confirm: 'Are you sure?' }
+
+hr/
+h4
+  = "Total #{@current_user.profit}"
+h4
+  = "Total balance in euro #{@current_user.balance_in_euro}"
+br/
+center
+  btn.btn-default
+    = link_to 'New Investment', new_investment_path
+br/
