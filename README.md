@@ -1,24 +1,5 @@
-# README
+# Cryptomonitor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Monitor your bitcoin,eth and litecoin investment using a simple and intuitive dashboard.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+An application written using in Ruby thanks to Ruby on Rails.
